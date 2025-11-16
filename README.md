@@ -16,20 +16,21 @@ Combina diseño, funcionalidad e identidad visual inspirada en el **dios andino 
 
 ```plaintext
 📦 inti-fotografia
-├── index.html         → Página principal (Inicio)
-├── nosotros.html      → Historia y filosofía de la marca
-├── camaras.html       → Tienda de cámaras y lentes
-├── accesorios.html    → Accesorios fotográficos
-├── cursos.html        → Cursos y capacitaciones
-├── servicios.html     → Servicios fotográficos profesionales
-├── bebes.html         → Fotografía infantil
-├── contacto.html      → Formulario + mapa de ubicación
-├── promociones.html   → Página de promociones con descuentos dinámicos (JS)
-├── carrito.html       → Carrito funcional con LocalStorage
-├── style.css          → Estilos generales y componentes visuales
-├── cart.js            → Lógica del carrito y almacenamiento local
-├── promociones.js     → Lógica de cálculo de descuentos y conexión con carrito
-└── /img               → Carpeta de recursos visuales (logo, productos, cursos, etc.)
+├── index.html           → Inicio del sitio
+├── nosotros.html        → Historia y filosofía de la marca
+├── camaras.html         → Catálogo de cámaras y lentes
+├── accesorios.html      → Accesorios fotográficos
+├── cursos.html          → Cursos y capacitaciones
+├── servicios.html       → Servicios profesionales
+├── bebes.html           → Fotografía infantil
+├── contacto.html        → Formulario de contacto y ubicación
+├── promociones.html     → Cálculo de promociones dinámicas
+├── carrito.html         → Carrito de compras con persistencia
+├── /CSS/style.css       → Estilos globales del sitio
+├── /JS/cart.js          → Lógica del carrito de compras
+├── /JS/promociones.js   → Lógica del módulo de promociones
+└── /img                 → Recursos visuales (logo, productos, banners, etc.)
+
 ```
 
 ---
@@ -38,14 +39,14 @@ Combina diseño, funcionalidad e identidad visual inspirada en el **dios andino 
 
 ### Paleta cromática  
 
-| Color | Código | Significado |
-|:--|:--|:--|
-| 🔴 Rojo | `#D32F2F` | Energía y pasión |
-| 🟠 Naranja | `#FB8C00` | Creatividad y dinamismo |
-| 🔵 Azul | `#1976D2` | Confianza y profesionalismo |
-| 🟣 Violeta | `#8E24AA` | Inspiración y elegancia |
-| 🟢 Verde | `#7CB342` | Renovación y naturaleza |
-| 🟦 Celeste | `#00ACC1` | Tecnología y frescura |
+| Color   | Código    | Significado                 |
+| ------- | --------- | --------------------------- |
+| Rojo    | `#D32F2F` | Energía y pasión            |
+| Naranja | `#FB8C00` | Creatividad y dinamismo     |
+| Azul    | `#1976D2` | Confianza y profesionalismo |
+| Violeta | `#8E24AA` | Inspiración y elegancia     |
+| Verde   | `#7CB342` | Renovación                  |
+| Celeste | `#00ACC1` | Frescura y tecnología       |
 
 ###  Tipografía  
 **Roboto (Google Fonts)** – moderna, clara y adaptable a todos los tamaños de pantalla.
