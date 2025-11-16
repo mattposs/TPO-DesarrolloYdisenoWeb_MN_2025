@@ -629,4 +629,43 @@ td.center {
         width: 100%;
     }
 }
+/* Ocultar el checkbox */
+.menu-toggle {
+    display: none;
+}
+
+/* Estilos del menú móvil */
+@media (max-width: 900px) {
+    .menu {
+        position: absolute;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        background: #000;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+        transition: .3s ease;
+        gap: 20px;
+    }
+
+    .menu a {
+        display: block;
+        padding: 10px;
+        font-size: 1.2rem;
+    }
+
+    /* Mostrar el menú cuando se activa el checkbox */
+    #menu-toggle:checked ~ .menu {
+        left: 0;
+    }
+
+    /* Mostrar icono hamburguesa */
+    .menu-icon {
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
+        color: white;
+    }
+}
 
