@@ -1,0 +1,513 @@
+/* RESET -------------------------------------- */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI", sans-serif;
+}
+
+body{
+  background:#F4F4F6;
+  color:#222;
+}
+
+/* PALETA -------------------------------------- */
+:root{
+  --violeta-oscuro:#3B2A73;
+  --violeta-medio:#5E3FB0;
+  --azul:#1A3DB5;
+  --cian:#3BB2FE;
+  --blanco:#FFF;
+  --max-width:1200px;
+}
+
+/* HEADER -------------------------------------- */
+.header{
+  background:#000;
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#fff;
+  font-size:1.3rem;
+  font-weight:700;
+}
+
+.logo-img{
+  width:42px;
+}
+
+/* NAV */
+.menu{
+  display:flex;
+  gap:16px;
+}
+
+.menu a{
+  color:#fff;
+  text-decoration:none;
+  padding:8px 16px;
+  border-radius:20px;
+  font-weight:600;
+  transition:.2s;
+}
+
+.menu a:hover,
+.menu a.active{
+  background:var(--cian);
+  color:#000;
+}
+
+.menu-icon{
+  display:none;
+}
+
+/* HERO -------------------------------------- */
+.hero{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  padding:80px 0;
+  background:linear-gradient(130deg, var(--violeta-oscuro), var(--violeta-medio), var(--azul));
+  box-shadow:inset 0 0 80px rgba(0,0,0,.4);
+}
+
+.hero-inner{
+  width:90%;
+  max-width:900px;
+  text-align:left;
+  color:#fff;
+}
+
+.hero-inner h1{
+  font-size:clamp(3rem,5vw,4.5rem);
+  font-weight:900;
+  letter-spacing:-1px;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.hero-inner h1 span{
+  color:var(--cian);
+}
+
+.hero-inner p{
+  font-size:1.3rem;
+  margin-bottom:20px;
+  opacity:.9;
+}
+
+.btn{
+  background:var(--cian);
+  color:#000;
+  padding:12px 28px;
+  border-radius:40px;
+  text-decoration:none;
+  font-weight:700;
+  display:inline-block;
+  transition:.2s;
+}
+
+.btn:hover{
+  background:#fff;
+}
+
+.hero-inner{
+    text-align: center !important;
+    margin: 0 auto !important;
+}
+
+.hero-inner h1{
+    margin-bottom: 30px;
+}
+
+.hero-inner h1 span{
+    margin-top: 14px;
+}
+/* PRODUCTOS --------------------------------- */
+.productos{
+  max-width:var(--max-width);
+  margin:50px auto;
+  padding:0 20px;
+}
+
+.productos h2{
+  text-align:center;
+  font-size:2rem;
+  font-weight:900;
+  color:var(--violeta-oscuro);
+  margin-bottom:30px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:28px;
+}
+
+/* CARDS -------------------------------------- */
+.card{
+  background:#fff;
+  border-radius:18px;
+  box-shadow:0 8px 24px rgba(0,0,0,.12);
+  border:1px solid #ddd;
+  overflow:hidden;
+  transition:.25s ease;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 14px 40px rgba(0,0,0,.22);
+}
+
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.card h3{
+  text-align:center;
+  padding-top:14px;
+  font-size:1.1rem;
+}
+
+.card .precio{
+  text-align:center;
+  padding:6px 0;
+  font-weight:900;
+  color:var(--azul);
+}
+
+.card .btn{
+  width:80%;
+  margin:14px auto 20px;
+  text-align:center;
+}
+
+.card{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* PROMOS ------------------------------------ */
+.promos{
+  text-align:center;
+  padding:50px 20px;
+}
+
+.promos h2{
+  font-size:2rem;
+  font-weight:900;
+  color:var(--violeta-oscuro);
+}
+
+.promo-sub{
+  margin:12px 0 20px;
+  font-size:1.2rem;
+}
+
+/* FOOTER ------------------------------------ */
+.footer{
+  background:#fff;
+  text-align:center;
+  padding:20px;
+  border-top:1px solid #ddd;
+  margin-top:40px;
+}
+/* --- LOGO MÁS GRANDE Y BALANCEADO --- */
+.logo-img{
+  width: 70px !important;
+  height: auto;
+}
+
+.logo{
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+}
+/* --- BOTONES CENTRADOS CORRECTAMENTE EN CARDS --- */
+.card .btn{
+  display: block !important;
+  width: 80% !important;
+  margin: 14px auto 20px !important;
+  text-align: center;
+}
+/* ================================
+   CONTACTO — DISEÑO FINAL PREMIUM
+================================ */
+
+body {
+  background: #f4f6f9;
+}
+
+/* wrapper centrado y ancho correcto */
+.contact-wrapper {
+  max-width: 1200px;
+  margin: 60px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 0 20px;
+}
+
+/* TARJETAS */
+.contact-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 40px 35px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  border: 1px solid #e5e5e5;
+}
+
+/* CHECKBOXES ORDENADOS Y ALINEADOS */
+.contact-checkbox{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.contact-checkbox input{
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.contact-checkbox label{
+  font-size: 0.95rem;
+  cursor: pointer;
+  line-height: 1.3;
+  margin: 0;
+  display: block;
+}
+
+
+
+
+/* mismo estilo que tus cards generales */
+.contact-card h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-align: left;
+  margin-bottom: 25px;
+  color: #1a1a1a;
+}
+
+/* Inputs */
+.contact-card input,
+.contact-card select,
+.contact-card textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cfcfcf;
+  border-radius: 10px;
+  margin-top: 6px;
+  margin-bottom: 18px;
+  font-size: 0.95rem;
+}
+
+
+/* Info de contacto */
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin: 25px 0;
+}
+
+.contact-info-item img {
+  width: 42px;
+}
+
+.contact-info-item h4 {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+/* Botón */
+.contact-card .btn {
+  width: 100%;
+  padding: 14px 0;
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================
+   FIJAR IMÁGENES DEL CARRITO
+============================ */
+
+#cart-items img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid #f0f0f0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* ---------------------------
+   CARRITO — ESTILO PREMIUM
+--------------------------- */
+
+/* Contenedor */
+#cart-wrapper {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    margin-bottom: 40px;
+}
+
+/* FILAS DEL CARRITO */
+#cart-items tr {
+    border-bottom: 1px solid #eee;
+}
+
+#cart-items td {
+    padding: 16px 10px;
+    vertical-align: middle;
+}
+
+/* PRODUCTO (imagen + texto) */
+.cart-product {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.cart-product img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    flex-shrink: 0;
+}
+
+.cart-info strong {
+    font-size: 1rem;
+}
+
+.cart-info .sku {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 4px;
+}
+
+/* PRECIO Y SUBTOTAL */
+td.right {
+    text-align: right;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* CANTIDAD */
+td.center {
+    text-align: center;
+}
+
+.qty-btn {
+    background: #eaeaea;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.qty-btn:hover {
+    background: #d5d5d5;
+}
+
+.qty-input {
+    width: 55px;
+    height: 36px;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* BOTÓN ELIMINAR */
+.remove-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #999;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.remove-btn:hover {
+    color: #e40000;
+}
+
+/* RESUMEN */
+#cart-summary {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    margin-top: 20px;
+}
+
+#cart-summary h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#cart-summary p {
+    font-size: 1.05rem;
+    margin: 8px 0;
+}
+
+/* BOTONES FINALES */
+.cart-actions button {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
+    margin-top: 12px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.25s;
+}
+
+#cart-clear {
+    background: #64b5ff;
+    color: white;
+}
+
+#cart-clear:hover {
+    background: #4ba8ff;
+}
+
+#cart-checkout {
+    background: #1a73e8;
+    color: white;
+}
+
+#cart-checkout:hover {
+    background: #1259b5;
+}
