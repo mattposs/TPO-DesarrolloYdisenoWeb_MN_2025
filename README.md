@@ -1,9 +1,9 @@
-# 📸 Inti Fotografía – Sitio Web  
+# Inti Fotografía – Sitio Web  
 **Trabajo Práctico Obligatorio (TPO) – Diseño y Desarrollo Web – UADE 2025 (Comisión Martes Noche)**
 
 ---
 
-## 🌅 Descripción general  
+## Descripción general  
 
 **Inti Fotografía** es un sitio web moderno y responsivo que representa un **local comercial de fotografía profesional**.  
 Integra tienda online, carrito funcional, promociones dinámicas y servicios fotográficos.  
@@ -12,7 +12,7 @@ Combina diseño, funcionalidad e identidad visual inspirada en el **dios andino 
 
 ---
 
-## 🧱 Estructura del sitio  
+## Estructura del sitio  
 
 ```plaintext
 📦 inti-fotografia
@@ -34,9 +34,9 @@ Combina diseño, funcionalidad e identidad visual inspirada en el **dios andino 
 
 ---
 
-## 🎨 Diseño e identidad visual  
+##Diseño e identidad visual  
 
-### 🎨 Paleta cromática  
+### Paleta cromática  
 
 | Color | Código | Significado |
 |:--|:--|:--|
@@ -47,10 +47,10 @@ Combina diseño, funcionalidad e identidad visual inspirada en el **dios andino 
 | 🟢 Verde | `#7CB342` | Renovación y naturaleza |
 | 🟦 Celeste | `#00ACC1` | Tecnología y frescura |
 
-### 🖋 Tipografía  
+###  Tipografía  
 **Roboto (Google Fonts)** – moderna, clara y adaptable a todos los tamaños de pantalla.
 
-### 💎 Estilo visual  
+###  Estilo visual  
 - Barra de navegación centrada con **efecto Glass Blur** y botones redondeados.  
 - Secciones con **cards flexibles y sombras suaves**.  
 - **Hero principal** con degradado de color y CTA.  
@@ -59,28 +59,28 @@ Combina diseño, funcionalidad e identidad visual inspirada en el **dios andino 
 
 ---
 
-## ⚙️ Funcionalidades JavaScript  
+## Funcionalidades JavaScript  
 
-### 🛒 Carrito de compras (`cart.js`)  
+### Carrito de compras (`cart.js`)  
 - Maneja los productos seleccionados desde todas las páginas del sitio.  
 - Almacena los datos en **LocalStorage** bajo la clave `inti_cart_v1`.  
 - Permite sumar, restar, eliminar y vaciar productos.  
 - Calcula el subtotal y el total automáticamente.  
 
-### 💰 Promociones dinámicas (`promociones.html` + `promociones.js`)  
+### Promociones dinámicas (`promociones.html` + `promociones.js`)  
 Nueva sección implementada en la **tercera etapa del TPO** (Actividad JavaScript).  
 
-#### ✅ Funciones principales:
+#### Funciones principales:
 - Permite seleccionar productos del catálogo con promociones activas.  
 - Calcula descuentos automáticamente según el tipo de producto:  
-  - 📚 **Cursos:** 2×1 (pagás uno, llevás dos)  
-  - 📷 **Cámaras y lentes:** 10% de descuento pagando en efectivo  
-  - 💾 **Tarjeta SD 128GB:** 50% en la segunda unidad  
+  -  **Cursos:** 2×1 (pagás uno, llevás dos)  
+  - **Cámaras y lentes:** 10% de descuento pagando en efectivo  
+  -  **Tarjeta SD 128GB:** 50% en la segunda unidad  
 - Muestra el total sin descuento, el descuento aplicado y el total final.  
 - Integra el resultado al carrito principal con **almacenamiento persistente**.  
 - Incluye **feedback visual** (botón verde de confirmación) y mensajes dinámicos.
 
-#### 🧩 Ejemplo de flujo:  
+#### Ejemplo de flujo:  
 1. El usuario selecciona un curso.  
 2. El precio se completa automáticamente.  
 3. Al calcular, aparece el descuento y el total final.  
@@ -89,7 +89,7 @@ Nueva sección implementada en la **tercera etapa del TPO** (Actividad JavaScrip
 
 ---
 
-## 🧠 Tecnologías utilizadas  
+## Tecnologías utilizadas  
 
 | Tecnología | Uso |
 |:--|:--|
@@ -102,13 +102,13 @@ Nueva sección implementada en la **tercera etapa del TPO** (Actividad JavaScrip
 
 ---
 
-## 🗺️ Mapa del sitio  
+## Mapa del sitio  
 
 ![Mapa del sitio – Inti Fotografía](./MAPA%20DEL%20SITIOv2.png)
 
 ---
 
-## 🚀 Publicación  
+##  Publicación  
 
 - **Repositorio:** [https://github.com/mattposs/TPO-DesarrolloYdisenoWeb_MN_2025](https://github.com/mattposs/TPO-DesarrolloYdisenoWeb_MN_2025)  
 - **Sitio online (GitHub Pages):** [https://mattposs.github.io/TPO-DesarrolloYdisenoWeb_MN_2025/](https://mattposs.github.io/TPO-DesarrolloYdisenoWeb_MN_2025/)  
@@ -116,23 +116,23 @@ Nueva sección implementada en la **tercera etapa del TPO** (Actividad JavaScrip
 
 ---
 
-## 📁 Documentación complementaria  
+## Documentación complementaria  
 
-- 📄 Documento institucional con Introducción, Misión, Visión, Objetivo Estratégico y Conclusión.  
-- 🧮 Actividad JavaScript Local Comercial – Implementación de promociones dinámicas.  
-- 🗺️ Mapa del sitio visual en formato PNG (adjunto).  
+-  Documento institucional con Introducción, Misión, Visión, Objetivo Estratégico y Conclusión.  
+-  Actividad JavaScript Local Comercial – Implementación de promociones dinámicas.  
+-  Mapa del sitio visual en formato PNG (adjunto).  
 
 ---
 
-## 🧑‍🎓 Autor  
+##  Autor  
 
 **Matías Ezequiel Posse Presa**  
-💻 UADE – Diseño y Desarrollo Web  
-🕓 Comisión Martes Noche 2025  
+ UADE – Diseño y Desarrollo Web  
+ Comisión Martes Noche 2025  
 
 ---
 
-## 💬 Conclusión  
+##  Conclusión  
 
 El sitio **Inti Fotografía** combina un diseño moderno, responsive y visualmente atractivo  
 con funcionalidades reales de interacción y persistencia de datos.  
