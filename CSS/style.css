@@ -511,3 +511,71 @@ td.center {
 #cart-checkout:hover {
     background: #1259b5;
 }
+
+/*responsive*/
+
+@media (max-width: 768px) {
+    .menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        background: #fff;
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 20px;
+        text-align: center;
+        transition: 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    }
+
+    .menu.open {
+        left: 0;
+    }
+
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+        font-size: 28px;
+        color: #fff;
+    }
+
+    .header {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 50px 20px;
+        text-align: center;
+    }
+
+    .hero-inner {
+        text-align: center !important;
+        width: 100%;
+        margin: auto;
+    }
+
+    .hero-inner h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+    }
+
+    .hero-inner p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -5,6 +5,12 @@
 
   const $  = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+  const menu = document.querySelector('.menu');
+const toggle = document.querySelector('.menu-icon');
+
+toggle.addEventListener('click', () => {
+    menu.classList.toggle('open');
+});
 
   const money = n => '$' + Number(n).toLocaleString('es-AR');
 
