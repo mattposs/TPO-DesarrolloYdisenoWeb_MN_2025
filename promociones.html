@@ -31,71 +31,80 @@
     </nav>
 </header>
 
-<!-- HERO UNIFICADO -->
+<!-- HERO -->
 <section class="hero">
     <div class="hero-inner">
-<h1>
-    Promociones Exclusivas<br>
-    <span>Capturá más, pagá menos</span>
-</h1>
+        <h1>
+            Promociones Exclusivas<br>
+            <span>Capturá más, pagá menos</span>
+        </h1>
         <p>Calculá tus descuentos y aprovechá las mejores ofertas del mes.</p>
     </div>
 </section>
 
-<main class="productos" style="max-width:800px; margin-top:40px;">
+<main>
 
-    <h2 style="text-align:center; font-size:2rem; margin-bottom:20px;">
-        Calculadora de Promociones
-    </h2>
+    <!-- LISTADO DE PROMOCIONES -->
+    <section class="promo-grid">
+        <h2 class="titulo-seccion">Promociones del Mes</h2>
+        <div id="promoCards" class="promo-cards"></div>
+    </section>
 
-    <!-- TARJETA DEL FORMULARIO -->
-    <div style="
-        background:white; padding:30px; border-radius:18px;
-        box-shadow:0 8px 24px rgba(0,0,0,.08); border:1px solid #e5e5e5;
-    ">
+    <!-- CALCULADORA -->
+    <section style="max-width:800px; margin:40px auto;">
 
-        <form id="promoForm" style="display:flex; flex-direction:column; gap:18px;">
+        <h2 style="text-align:center; font-size:2rem; margin-bottom:20px;">
+            Calculadora de Promociones
+        </h2>
 
-            <div>
-                <label><strong>Precio del producto ($)</strong></label>
-                <input type="number" id="precio" class="input" placeholder="Ej: 2000" required
-                style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc;">
-            </div>
+        <div style="
+            background:white; padding:30px; border-radius:18px;
+            box-shadow:0 8px 24px rgba(0,0,0,.08); border:1px solid #e5e5e5;
+        ">
 
-            <div>
-                <label><strong>Porcentaje de descuento (%)</strong></label>
-                <input type="number" id="descuento" class="input" placeholder="Ej: 20" required
-                style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc;">
-            </div>
+            <form id="promoForm" style="display:flex; flex-direction:column; gap:18px;">
 
-            <div>
-                <label><strong>Seleccioná categoría</strong></label>
-                <select id="categoria" class="input"
-                style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc;">
-                    <option value="camara">Cámaras</option>
-                    <option value="lente">Lentes</option>
-                    <option value="curso">Cursos</option>
-                    <option value="accesorio">Accesorios</option>
-                </select>
-            </div>
+                <div>
+                    <label><strong>Precio del producto ($)</strong></label>
+                    <input type="number" id="precio" class="input" placeholder="Ej: 2000" required
+                    style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc;">
+                </div>
 
-            <button type="submit" class="btn" 
-            style="width:100%; margin-top:10px;">
-                Calcular promoción
-            </button>
-        </form>
-    </div>
+                <div>
+                    <label><strong>Porcentaje de descuento (%)</strong></label>
+                    <input type="number" id="descuento" class="input" placeholder="Ej: 20" required
+                    style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc;">
+                </div>
 
-    <!-- RESULTADO -->
-    <div id="resultado" style="
-        display:none; margin-top:30px; padding:25px;
-        background:white; border-radius:18px;
-        box-shadow:0 8px 24px rgba(0,0,0,.08); border:1px solid #e5e5e5;
-        text-align:center;
-    ">
-        <h3 style="margin-bottom:15px;">Resultado</h3>
-        <p id="resultadoTexto" style="font-size:1.2rem; font-weight:600; color:#333;"></p>
-    </div>
+                <div>
+                    <label><strong>Seleccioná categoría</strong></label>
+                    <select id="categoria" class="input"
+                    style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc;">
+                        <option value="camara">Cámaras</option>
+                        <option value="lente">Lentes</option>
+                        <option value="curso">Cursos</option>
+                        <option value="accesorio">Accesorios</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn" style="width:100%; margin-top:10px;">
+                    Calcular promoción
+                </button>
+            </form>
+        </div>
+
+        <!-- RESULTADO -->
+        <div id="resultado" style="
+            display:none; margin-top:30px; padding:25px;
+            background:white; border-radius:18px;
+            box-shadow:0 8px 24px rgba(0,0,0,.08); border:1px solid #e5e5e5;
+            text-align:center;
+        ">
+            <h3 style="margin-bottom:15px;">Resultado</h3>
+            <p id="resultadoTexto" style="font-size:1.2rem; font-weight:600; color:#333;"></p>
+        </div>
+
+    </section>
 
 </main>
 
@@ -103,35 +112,8 @@
     <p>&copy; 2025 INTI Fotografía. Todos los derechos reservados.</p>
 </footer>
 
-<script>
-    const form = document.querySelector("#promoForm");
-    const resultado = document.querySelector("#resultado");
-    const texto = document.querySelector("#resultadoTexto");
-
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const precio = Number(document.querySelector("#precio").value);
-        const descuento = Number(document.querySelector("#descuento").value);
-
-        if (precio <= 0 || descuento < 0) {
-            texto.innerText = "Ingresá valores válidos.";
-            resultado.style.display = "block";
-            return;
-        }
-
-        const final = precio - (precio * descuento / 100);
-
-        texto.innerHTML = `
-            Precio original: $${precio}<br>
-            Descuento aplicado: ${descuento}%<br><br>
-            <strong>Precio final: $${final.toFixed(2)}</strong>
-        `;
-
-        resultado.style.display = "block";
-        resultado.scrollIntoView({ behavior: "smooth" });
-    });
-</script>
+<!-- ARCHIVO JS EXTERNO -->
+<script src="./js/promociones.js"></script>
 
 </body>
 </html>
