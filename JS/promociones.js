@@ -1,4 +1,4 @@
-/* Inti Fotografía – Promociones conectadas con carrito (versión limpia y estable) */
+/* Inti Fotografía – Promociones conectadas con carrito*/
 (() => {
 
   const STORAGE_KEY = 'inti_cart_v1';
