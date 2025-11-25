@@ -15,10 +15,12 @@
         <span>INTI Fotografía</span>
     </div>
 
-    <input type="checkbox" id="menu-toggle">
+    <!-- El checkbox debe tener la clase correcta -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
     <label class="menu-icon" for="menu-toggle">☰</label>
 
-    <nav class="nav">
+    <!-- CAMBIO IMPORTANTE: nav → menu -->
+    <nav class="menu">
         <a href="index.html">Inicio</a>
         <a href="cursos.html">Cursos</a>
         <a href="servicios.html">Servicios</a>
@@ -36,10 +38,7 @@
         Seleccioná un producto y calculá automáticamente la promoción activa.
     </p>
 
-    <!-- FORMULARIO DE PROMOCIONES -->
     <form id="promoForm" style="display:flex; flex-direction:column; gap:18px;">
-
-        <!-- SELECT PROMOS -->
         <div>
             <label><strong>Seleccioná una promoción</strong></label>
             <select id="producto" class="input"
@@ -57,7 +56,6 @@
             </select>
         </div>
 
-        <!-- CANTIDAD -->
         <div>
             <label><strong>Cantidad</strong></label>
             <input
@@ -75,7 +73,6 @@
 
     </form>
 
-    <!-- RESULTADOS -->
     <div id="resultado" style="margin-top:30px; padding:20px; background:#fafafa; border-radius:10px; display:none;">
 
         <p id="promoNombre" style="font-size:1.2rem; font-weight:600;"></p>
@@ -96,4 +93,3 @@
 
 </body>
 </html>
-
