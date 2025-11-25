@@ -15,114 +15,76 @@
         <span>INTI Fotografía</span>
     </div>
 
+    <input type="checkbox" id="menu-toggle">
     <label class="menu-icon" for="menu-toggle">☰</label>
-    <input type="checkbox" id="menu-toggle" class="menu-toggle">
 
-    <nav class="menu">
-        <a href="index.html">Home</a>
-        <a href="nosotros.html">Nosotros</a>
-        <a href="camaras.html">Cámaras y Lentes</a>
-        <a href="accesorios.html">Accesorios</a>
+    <nav class="nav">
+        <a href="index.html">Inicio</a>
         <a href="cursos.html">Cursos</a>
         <a href="servicios.html">Servicios</a>
-        <a href="contacto.html">Contacto</a>
-        <a href="carrito.html">Carrito</a>
+        <a href="accesorios.html">Accesorios</a>
+        <a href="bebes.html">Bebés</a>
         <a href="promociones.html" class="active">Promociones</a>
+        <a href="contacto.html">Contacto</a>
     </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-inner">
-        <h1>
-            Promociones Exclusivas<br>
-            <span>Capturá más, pagá menos</span>
-        </h1>
-        <p>Calculá tus descuentos y aprovechá las mejores ofertas del mes.</p>
+<main class="contenedor" style="max-width:700px; margin:auto; padding:40px 20px;">
+
+    <h1 class="titulo-seccion">Promociones Exclusivas</h1>
+    <p class="texto-centro" style="margin-bottom:25px;">
+        Seleccioná un producto y calculá automáticamente la promoción activa.
+    </p>
+
+    <!-- FORMULARIO DE PROMOCIONES -->
+    <form id="promoForm" style="display:flex; flex-direction:column; gap:18px;">
+
+        <!-- SELECT PROMOS -->
+        <div>
+            <label><strong>Seleccioná una promoción</strong></label>
+            <select id="producto" class="input"
+                style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc;">
+                <option value="">Elegí un producto...</option>
+                <option value="celular">Curso Fotografía con Celular (2x1)</option>
+                <option value="digital">Curso Fotografía Digital (2x1)</option>
+                <option value="analogica">Curso Fotografía Analógica (2x1)</option>
+                <option value="social">Curso Fotografía Social (2x1)</option>
+                <option value="reflex">Cámara Reflex Pro (10%)</option>
+                <option value="mirrorless">Cámara Mirrorless (10%)</option>
+                <option value="lente50">Lente 50mm (10%)</option>
+                <option value="zoom70">Lente Zoom 70-200 (10%)</option>
+                <option value="sd128">Tarjeta SD 128GB (50%)</option>
+            </select>
+        </div>
+
+        <!-- CANTIDAD -->
+        <div>
+            <label><strong>Cantidad</strong></label>
+            <input
+                type="number"
+                id="cantidad"
+                class="input"
+                placeholder="Ej: 2"
+                style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc;"
+            >
+        </div>
+
+        <button type="submit" class="btn" style="width:100%; margin-top:10px;">
+            Calcular promoción
+        </button>
+
+    </form>
+
+    <!-- RESULTADOS -->
+    <div id="resultado" style="margin-top:30px; padding:20px; background:#fafafa; border-radius:10px; display:none;">
+
+        <p id="promoNombre" style="font-size:1.2rem; font-weight:600;"></p>
+        <p id="precioOriginal"></p>
+        <p id="descuentoAplicado"></p>
+        <p id="totalFinal" style="font-size:1.3rem; font-weight:700; margin-top:15px;"></p>
+        <p id="mensajeExtra" style="color:#5a49d6; margin-top:10px;"></p>
+
     </div>
-</section>
-
-<main>
-
-    <!-- CALCULADORA -->
-    <section style="max-width:800px; margin:40px auto;">
-
-        <h2 style="text-align:center; font-size:2rem; margin-bottom:20px;">
-            Calculadora de Promociones
-        </h2>
-
-        <div style="
-            background:white; padding:30px; border-radius:18px;
-            box-shadow:0 8px 24px rgba(0,0,0,.08); border:1px solid #e5e5e5;
-        ">
-
-            <form id="promoForm" style="display:flex; flex-direction:column; gap:18px;">
-
-                <!-- SELECT PROMOS -->
-                <div>
-                    <label><strong>Seleccioná una promoción</strong></label>
-                    <select id="producto" class="input"
-                        style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc;">
-                        <option value="">Elegí un producto...</option>
-                        <option value="celular">Curso Fotografía con Celular (2x1)</option>
-                        <option value="digital">Curso Fotografía Digital (2x1)</option>
-                        <option value="analogica">Curso Fotografía Analógica (2x1)</option>
-                        <option value="social">Curso Fotografía Social (2x1)</option>
-                        <option value="reflex">Cámara Reflex Pro (10%)</option>
-                        <option value="mirrorless">Cámara Mirrorless (10%)</option>
-                        <option value="lente50">Lente 50mm (10%)</option>
-                        <option value="zoom70">Lente Zoom 70-200 (10%)</option>
-                        <option value="sd128">Tarjeta SD 128GB (50%)</option>
-                    </select>
-                </div>
-
-                <!-- PRECIO -->
-                <div>
-                    <label><strong>Precio del producto ($)</strong></label>
-                    <input
-                        type="number"
-                        id="precio"
-                        class="input"
-                        readonly
-                        placeholder="Seleccioná una promo"
-                        style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc;"
-                    >
-                </div>
-
-                <!-- CANTIDAD -->
-                <div>
-                    <label><strong>Cantidad</strong></label>
-                    <input
-                        type="number"
-                        id="cantidad"
-                        class="input"
-                        placeholder="Ej: 2"
-                        style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc;"
-                    >
-                </div>
-
-                <button type="submit" class="btn" style="width:100%; margin-top:10px;">
-                    Calcular promoción
-                </button>
-
-            </form>
-        </div>
-
-        <!-- RESULTADO -->
-        <div id="resultado" style="
-            display:none; margin-top:30px; padding:25px;
-            background:white; border-radius:18px;
-            box-shadow:0 8px 24px rgba(0,0,0,.08); border:1px solid #e5e5e5;
-            text-align:center;
-        ">
-            <h3 style="margin-bottom:15px;">Resultado</h3>
-            <p id="totalSinDescuento"></p>
-            <p id="descuentoAplicado"></p>
-            <p id="totalFinal"></p>
-            <p id="mensajeExtra" style="font-weight:600; color:#333;"></p>
-        </div>
-
-    </section>
 
 </main>
 
@@ -130,9 +92,8 @@
     <p>&copy; 2025 INTI Fotografía. Todos los derechos reservados.</p>
 </footer>
 
-<!-- IMPORTANTE: un solo JS -->
+<!-- ARCHIVO JS CORREGIDO (carpeta correcta) -->
 <script src="./JS/promociones.js"></script>
 
 </body>
 </html>
-
