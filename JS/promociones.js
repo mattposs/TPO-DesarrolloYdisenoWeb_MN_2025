@@ -97,7 +97,7 @@
       localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
 
       // Feedback
-      btn.textContent = "✓ Agregado con descuento";
+      btn.textContent = "Agregado con descuento";
       btn.style.background = "var(--verde)";
       setTimeout(() => {
         btn.textContent = "Agregar al carrito";
