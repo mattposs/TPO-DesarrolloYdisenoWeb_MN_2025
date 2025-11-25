@@ -1,87 +1,120 @@
-/* Inti Fotografía – Promociones seguras */
+// Inti Fotografía – Calculadora de promociones
 document.addEventListener("DOMContentLoaded", () => {
 
   const $ = sel => document.querySelector(sel);
 
-  // --- Catálogo ---
+  // --- Catálogo de productos y promos ---
   const productos = {
-    celular:   { name:"Curso Fotografía con Celular",  price:15000, promo:"2x1" },
-    digital:   { name:"Curso Fotografía Digital",       price:30000, promo:"2x1" },
-    analogica: { name:"Curso Fotografía Analógica",     price:35000, promo:"2x1" },
-    social:    { name:"Curso Fotografía Social",        price:40000, promo:"2x1" },
-    reflex:    { name:"Cámara Reflex Pro",              price:250000, promo:"10%" },
-    mirrorless:{ name:"Cámara Mirrorless",              price:220000, promo:"10%" },
-    lente50:   { name:"Lente 50mm",                     price:70000, promo:"10%" },
-    zoom70:    { name:"Lente Zoom 70-200",              price:150000, promo:"10%" },
-    sd128:     { name:"Tarjeta SD 128GB",               price:8000, promo:"50%" }
+    celular:   { name: "Curso Fotografía con Celular",  price: 15000, promo: "2x1" },
+    digital:   { name: "Curso Fotografía Digital",      price: 30000, promo: "2x1" },
+    analogica: { name: "Curso Fotografía Analógica",    price: 35000, promo: "2x1" },
+    social:    { name: "Curso Fotografía Social",       price: 40000, promo: "2x1" },
+    reflex:    { name: "Cámara Reflex Pro",             price: 250000, promo: "10%" },
+    mirrorless:{ name: "Cámara Mirrorless",             price: 220000, promo: "10%" },
+    lente50:   { name: "Lente 50mm",                    price: 70000, promo: "10%" },
+    zoom70:    { name: "Lente Zoom 70-200",             price: 150000, promo: "10%" },
+    sd128:     { name: "Tarjeta SD 128GB",              price: 8000,  promo: "50%" }
   };
 
-  /* ============================
-     SELECT → ACTUALIZAR PRECIO
-  ============================ */
   const selectProducto = $("#producto");
-  const precioInput = $("#precio");
+  const precioInput    = $("#precio");
+  const cantidadInput  = $("#cantidad");
+  const form           = $("#promoForm");
+  const resultadoBox   = $("#resultado");
+  const totalSinDescuentoEl = $("#totalSinDescuento");
+  const descuentoAplicadoEl = $("#descuentoAplicado");
+  const totalFinalEl        = $("#totalFinal");
+  const mensajeExtraEl      = $("#mensajeExtra");
 
-  if (selectProducto && precioInput) {
-    selectProducto.addEventListener("change", e => {
-      const prod = productos[e.target.value];
-      precioInput.value = prod ? prod.price : "";
-    });
+  // Seguridad básica: si algo no está, no rompemos
+  if (!selectProducto || !precioInput || !cantidadInput || !form) {
+    console.warn("Faltan elementos del formulario de promociones.");
+    return;
   }
 
-  /* ============================
-       CALCULAR PROMOCIÓN
-  ============================ */
-  const form = $("#promoForm");
+  // Cuando cambio el producto, se carga el precio automáticamente
+  selectProducto.addEventListener("change", e => {
+    const key = e.target.value;
+    const prod = productos[key];
+    if (prod) {
+      precioInput.value = prod.price;
+    } else {
+      precioInput.value = "";
+    }
+    // Ocultamos el resultado si se cambia la promo
+    if (resultadoBox) {
+      resultadoBox.style.display = "none";
+    }
+  });
 
-  if (form) {
-    form.addEventListener("submit", e => {
+  // Calcular promoción al enviar el formulario
+  form.addEventListener("submit", e => {
+    // FUNDAMENTAL: evitar recarga de la página
+    e.preventDefault();
 
-      // 🚨 ESTE ES EL FIX: evita el reload SIEMPRE
-      e.preventDefault();
+    const key  = selectProducto.value;
+    const prod = productos[key];
+    const cant = Number(cantidadInput.value);
 
-      const key = $("#producto").value;
-      const cant = Number($("#cantidad").value);
+    if (!prod || !key) {
+      alert("Seleccioná una promoción válida.");
+      return;
+    }
 
-      if (!key || cant <= 0) {
-        alert("Seleccioná un producto y una cantidad válida.");
-        return;
-      }
+    if (!cant || cant <= 0) {
+      alert("Ingresá una cantidad válida.");
+      return;
+    }
 
-      const prod = productos[key];
-      let subtotal = prod.price * cant;
-      let descuento = 0;
-      let mensaje = "";
+    const precioUnitario = prod.price;
+    const subtotal = precioUnitario * cant;
+    let descuento = 0;
+    let mensaje   = "";
 
-      // lógica de promo
-      if (prod.promo === "2x1") {
-        descuento = Math.floor(cant / 2) * prod.price;
-        mensaje = "Promoción 2x1 aplicada.";
-      }
+    switch (prod.promo) {
+      case "2x1":
+        // Por cada dos, uno gratis
+        descuento = Math.floor(cant / 2) * precioUnitario;
+        mensaje = "Promoción 2x1 aplicada. Pagás solo la mitad de las unidades en promo.";
+        break;
 
-      if (prod.promo === "10%") {
+      case "10%":
         descuento = subtotal * 0.10;
-        mensaje = "10% de descuento aplicado.";
-      }
+        mensaje = "10% de descuento aplicado sobre el total.";
+        break;
 
-      if (prod.promo === "50%") {
+      case "50%":
         if (cant >= 2) {
-          descuento = Math.floor(cant / 2) * (prod.price * 0.5);
+          // 50% en la segunda unidad
+          descuento = Math.floor(cant / 2) * (precioUnitario * 0.5);
           mensaje = "50% OFF en la segunda unidad.";
         } else {
-          mensaje = "Agregá 2 unidades para activar la promo.";
+          mensaje = "Agregá 2 unidades para activar la promo del 50% en la segunda.";
         }
-      }
+        break;
+    }
 
-      const totalFinal = subtotal - descuento;
+    const totalFinal = subtotal - descuento;
 
-      // mostrar
-      $("#resultado").style.display = "block";
-      $("#totalSinDescuento").textContent = `Total sin descuento: $${subtotal.toLocaleString("es-AR")}`;
-      $("#descuentoAplicado").textContent = `Descuento aplicado: $${descuento.toLocaleString("es-AR")}`;
-      $("#totalFinal").textContent = `Total final: $${totalFinal.toLocaleString("es-AR")}`;
-      $("#mensajeExtra").textContent = mensaje;
-    });
-  }
+    // Mostrar resultados en pantalla
+    if (resultadoBox) {
+      resultadoBox.style.display = "block";
+    }
+    if (totalSinDescuentoEl) {
+      totalSinDescuentoEl.textContent =
+        `Total sin descuento: $${subtotal.toLocaleString("es-AR")}`;
+    }
+    if (descuentoAplicadoEl) {
+      descuentoAplicadoEl.textContent =
+        `Descuento aplicado: $${descuento.toLocaleString("es-AR")}`;
+    }
+    if (totalFinalEl) {
+      totalFinalEl.textContent =
+        `Total final: $${totalFinal.toLocaleString("es-AR")}`;
+    }
+    if (mensajeExtraEl) {
+      mensajeExtraEl.textContent = mensaje;
+    }
+  });
 
 });
