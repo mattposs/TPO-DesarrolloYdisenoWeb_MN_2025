@@ -64,32 +64,45 @@
 
             <form id="promoForm" style="display:flex; flex-direction:column; gap:18px;">
 
+                <!-- SELECCIONAR PRODUCTO / PROMO -->
                 <div>
-                    <label><strong>Precio del producto ($)</strong></label>
-                    <input type="number" id="precio" class="input" placeholder="Ej: 2000" required
+                    <label><strong>Seleccioná una promoción</strong></label>
+                    <select id="producto" class="input"
                     style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc;">
-                </div>
-
-                <div>
-                    <label><strong>Porcentaje de descuento (%)</strong></label>
-                    <input type="number" id="descuento" class="input" placeholder="Ej: 20" required
-                    style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc;">
-                </div>
-
-                <div>
-                    <label><strong>Seleccioná categoría</strong></label>
-                    <select id="categoria" class="input"
-                    style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc;">
-                        <option value="camara">Cámaras</option>
-                        <option value="lente">Lentes</option>
-                        <option value="curso">Cursos</option>
-                        <option value="accesorio">Accesorios</option>
+                        <option value="">Elegí un producto...</option>
+                        <option value="celular">Curso Fotografía con Celular (2x1)</option>
+                        <option value="digital">Curso Fotografía Digital (2x1)</option>
+                        <option value="analogica">Curso Fotografía Analógica (2x1)</option>
+                        <option value="social">Curso Fotografía Social (2x1)</option>
+                        <option value="reflex">Cámara Reflex Pro (10%)</option>
+                        <option value="mirrorless">Cámara Mirrorless (10%)</option>
+                        <option value="lente50">Lente 50mm (10%)</option>
+                        <option value="zoom70">Lente Zoom 70-200 (10%)</option>
+                        <option value="sd128">Tarjeta SD 128GB (50%)</option>
                     </select>
                 </div>
 
-                <button type="submit" class="btn" style="width:100%; margin-top:10px;">
+                <!-- PRECIO AUTOMÁTICO -->
+                <div>
+                    <label><strong>Precio del producto ($)</strong></label>
+                    <input type="number" id="precio" class="input" readonly
+                    placeholder="Seleccioná una promo"
+                    style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc;">
+                </div>
+
+                <!-- CANTIDAD -->
+                <div>
+                    <label><strong>Cantidad</strong></label>
+                    <input type="number" id="cantidad" class="input" placeholder="Ej: 2"
+                    style="width:100%; padding:12px; border-radius:10px; border:1px solid #ccc;">
+                </div>
+
+                <!-- BOTÓN -->
+                <button type="submit" class="btn" 
+                style="width:100%; margin-top:10px;">
                     Calcular promoción
                 </button>
+
             </form>
         </div>
 
@@ -101,7 +114,10 @@
             text-align:center;
         ">
             <h3 style="margin-bottom:15px;">Resultado</h3>
-            <p id="resultadoTexto" style="font-size:1.2rem; font-weight:600; color:#333;"></p>
+            <p id="totalSinDescuento"></p>
+            <p id="descuentoAplicado"></p>
+            <p id="totalFinal"></p>
+            <p id="mensajeExtra" style="font-weight:600; color:#333;"></p>
         </div>
 
     </section>
@@ -112,8 +128,9 @@
     <p>&copy; 2025 INTI Fotografía. Todos los derechos reservados.</p>
 </footer>
 
-<!-- ARCHIVO JS EXTERNO -->
 <script src="./js/promociones.js"></script>
 
 </body>
 </html>
+
+
