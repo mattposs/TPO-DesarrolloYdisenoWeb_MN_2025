@@ -16,41 +16,19 @@ document.addEventListener("DOMContentLoaded", () => {
     sd128:     { name: "Tarjeta SD 128GB",              price: 8000,  promo: "50%" }
   };
 
-  const selectProducto = $("#producto");
-  const precioInput    = $("#precio");
-  const cantidadInput  = $("#cantidad");
-  const form           = $("#promoForm");
-  const resultadoBox   = $("#resultado");
-  const totalSinDescuentoEl = $("#totalSinDescuento");
+  const form            = $("#promoForm");
+  const selectProducto  = $("#producto");
+  const cantidadInput   = $("#cantidad");
+
+  const resultadoEl      = $("#resultado");
+  const promoNombreEl    = $("#promoNombre");
+  const precioOriginalEl = $("#precioOriginal");
   const descuentoAplicadoEl = $("#descuentoAplicado");
-  const totalFinalEl        = $("#totalFinal");
-  const mensajeExtraEl      = $("#mensajeExtra");
+  const totalFinalEl     = $("#totalFinal");
+  const mensajeExtraEl   = $("#mensajeExtra");
 
-  // Seguridad básica: si algo no está, no rompemos
-  if (!selectProducto || !precioInput || !cantidadInput || !form) {
-    console.warn("Faltan elementos del formulario de promociones.");
-    return;
-  }
-
-  // Cuando cambio el producto, se carga el precio automáticamente
-  selectProducto.addEventListener("change", e => {
-    const key = e.target.value;
-    const prod = productos[key];
-    if (prod) {
-      precioInput.value = prod.price;
-    } else {
-      precioInput.value = "";
-    }
-    // Ocultamos el resultado si se cambia la promo
-    if (resultadoBox) {
-      resultadoBox.style.display = "none";
-    }
-  });
-
-  // Calcular promoción al enviar el formulario
   form.addEventListener("submit", e => {
-    // FUNDAMENTAL: evitar recarga de la página
-    e.preventDefault();
+    e.preventDefault(); // evita recargar
 
     const key  = selectProducto.value;
     const prod = productos[key];
@@ -66,55 +44,38 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const precioUnitario = prod.price;
-    const subtotal = precioUnitario * cant;
-    let descuento = 0;
-    let mensaje   = "";
+    let totalOriginal = prod.price * cant;
+    let descuento     = 0;
+    let totalFinal    = totalOriginal;
+    let mensaje       = "";
 
-    switch (prod.promo) {
-      case "2x1":
-        // Por cada dos, uno gratis
-        descuento = Math.floor(cant / 2) * precioUnitario;
-        mensaje = "Promoción 2x1 aplicada. Pagás solo la mitad de las unidades en promo.";
-        break;
-
-      case "10%":
-        descuento = subtotal * 0.10;
-        mensaje = "10% de descuento aplicado sobre el total.";
-        break;
-
-      case "50%":
-        if (cant >= 2) {
-          // 50% en la segunda unidad
-          descuento = Math.floor(cant / 2) * (precioUnitario * 0.5);
-          mensaje = "50% OFF en la segunda unidad.";
-        } else {
-          mensaje = "Agregá 2 unidades para activar la promo del 50% en la segunda.";
-        }
-        break;
+    if (prod.promo === "2x1") {
+      descuento = prod.price * Math.floor(cant / 2);
+      totalFinal = totalOriginal - descuento;
+      mensaje = "¡Aprovechaste un 2x1!";
+    }
+    else if (prod.promo === "10%") {
+      descuento = totalOriginal * 0.10;
+      totalFinal = totalOriginal - descuento;
+      mensaje = "Descuento del 10% aplicado.";
+    }
+    else if (prod.promo === "50%") {
+      descuento = totalOriginal * 0.50;
+      totalFinal = totalOriginal - descuento;
+      mensaje = "Descuento del 50% aplicado.";
     }
 
-    const totalFinal = subtotal - descuento;
+    // Mostrar resultados
+    resultadoEl.style.display = "block";
 
-    // Mostrar resultados en pantalla
-    if (resultadoBox) {
-      resultadoBox.style.display = "block";
-    }
-    if (totalSinDescuentoEl) {
-      totalSinDescuentoEl.textContent =
-        `Total sin descuento: $${subtotal.toLocaleString("es-AR")}`;
-    }
-    if (descuentoAplicadoEl) {
-      descuentoAplicadoEl.textContent =
-        `Descuento aplicado: $${descuento.toLocaleString("es-AR")}`;
-    }
-    if (totalFinalEl) {
-      totalFinalEl.textContent =
-        `Total final: $${totalFinal.toLocaleString("es-AR")}`;
-    }
-    if (mensajeExtraEl) {
-      mensajeExtraEl.textContent = mensaje;
-    }
+    promoNombreEl.textContent = prod.name;
+    precioOriginalEl.textContent =
+      `Precio original: $${totalOriginal.toLocaleString("es-AR")}`;
+    descuentoAplicadoEl.textContent =
+      `Descuento aplicado: $${descuento.toLocaleString("es-AR")}`;
+    totalFinalEl.textContent =
+      `Total final: $${totalFinal.toLocaleString("es-AR")}`;
+    mensajeExtraEl.textContent = mensaje;
   });
 
 });
